@@ -4,14 +4,20 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node serve.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+
+    "postinstall": "ng build --prod",
+    "deploy:firebase": "ng build --prod && firebase deploy",
+    "deploy:gh": "ng build --prod --base-href='https://whoussen.github.io/AngularSample-App/' && git config --global user.email 'w_houssen@yahoo.com' && ngh"
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "1.2.4",
+    "@angular/compiler-cli": "^4.0.0",
     "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
@@ -23,12 +29,12 @@
     "@angular/router": "^4.0.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "express": "^4.17.1",
     "rxjs": "^5.1.0",
+    "typescript": "~2.3.3",
     "zone.js": "^0.8.4"
   },
-  "devDependencies": {
-    "@angular/cli": "1.1.0",
-    "@angular/compiler-cli": "^4.0.0",
+  "devDependencies": {    
     "@angular/language-service": "^4.0.0",
     "@types/jasmine": "2.5.45",
     "@types/node": "~6.0.60",
@@ -43,7 +49,6 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "protractor": "~5.1.2",
     "ts-node": "~3.0.4",
-    "tslint": "~5.3.2",
-    "typescript": "~2.3.3"
+    "tslint": "~5.3.2"
   }
 }

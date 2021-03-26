@@ -1,9 +1,20 @@
-<nav class="navbar navbar-default">
+<nav 
+  [style.backgroundColor]="backgroungColor"
+  class="navbar navbar-default">
   <div class="container-fluid">
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Followers</a></li>
-        <li><a href="#">Posts</a></li>
+        <li routerLinkActive="active current">
+          <a routerLink="/followers"
+          [queryParams] = "{page: 1 , order: 'newest' }"
+          >Followers</a></li>
+        <li routerLinkActive="active current"><a routerLink="/posts">Posts</a></li>        
+        <li routerLinkActive="active current"><a routerLink="/courses">Courses</a></li>
+        <li routerLinkActive="active current"><a routerLink="/favorite">Favorites</a></li>
+        <li routerLinkActive="active current"><a routerLink="/panel">panel</a></li>
+        <li routerLinkActive="active current"><a routerLink="/contactform">contactform</a></li>
+        <li routerLinkActive="active current"><a routerLink="/signupform">signupform</a></li>
+        <li routerLinkActive="active current"><a routerLink="/newcourseform">newcourseform</a></li>
       </ul>
     </div>
   </div>

@@ -21,7 +21,7 @@ export class PostsComponent implements OnInit {
   }
 
   createPost(input: HTMLInputElement) {
-    let post = { title: input.value };
+    const post = { title: input.value };
     this.posts.splice(0, 0, post);
 
     input.value = '';
@@ -37,7 +37,9 @@ export class PostsComponent implements OnInit {
           if (error instanceof BadInput) {
             // this.form.setErrors(error.originalError);
           }
-          else throw error;
+          else {
+            throw error;
+          }
         });
   }
 
@@ -49,7 +51,22 @@ export class PostsComponent implements OnInit {
         });
   }
 
-  deletePost(post) {
-    this.service.delete(post.id);
+  deletePost(post: any): void {
+    const index = this.posts.indexOf(post);
+    this.posts.splice(index, 1);
+
+    this.service.delete(post.id)
+      .subscribe(
+        null,
+        (error: AppError) => {
+          this.posts.splice(index, 0, post);
+
+          if (error instanceof NotFoundError) {
+            alert('This post has been alrady deleted');
+          }
+          else {
+            throw error;
+          }
+        });
   }
 }

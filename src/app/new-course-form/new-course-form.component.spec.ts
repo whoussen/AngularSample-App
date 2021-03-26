@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewCourseFormComponent } from './new-course-form.component';
 
@@ -6,12 +6,12 @@ describe('NewCourseFormComponent', () => {
   let component: NewCourseFormComponent;
   let fixture: ComponentFixture<NewCourseFormComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ NewCourseFormComponent ]
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NewCourseFormComponent);
@@ -19,7 +19,7 @@ describe('NewCourseFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should be created', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

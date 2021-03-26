@@ -1,8 +1,15 @@
-<span 
-  class="glyphicon"
-  [ngClass]="{
-    'glyphicon-star': isSelected,
-    'glyphicon-star-empty': !isSelected
-  }"
-  (click)="onClick()"
-  ></span>
+<span
+    class="glyphicon"
+    [class.glyphicon-star]="isSeleced"
+    [class.glyphicon-star-empty]="!isSeleced"    
+    (click)="onClick()"
+></span>
+<span
+    class="glyphicon"
+    [ngClass]="{
+        'glyphicon-star': isSeleced,
+        'glyphicon-star-empty': !isSeleced
+    }"       
+    (click)="onClick()"
+></span>
+<button class="btn btn-primary" >Save</button>

@@ -1,0 +1,38 @@
+<div *ngIf="courses.length>0; then coursesList else noCourses"></div>
+<ng-template #coursesList>List of courses</ng-template>
+<ng-template #noCourses>No Courses Yet</ng-template>
+
+<h2>{{"Title: "+ title}}</h2>
+    <ul>
+        <li *ngFor="let course of courses; trackBy: trackCourses, index as i,even as isEven,first as isFirst,last as isLast">
+            {{i+1}} - {{course}} <span *ngIf="isEven">(Even)</span><span *ngIf="isFirst">(First)</span><span *ngIf="isLast">(Last)</span>
+        </li>
+    </ul>
+    <table>
+        <tr>
+            <td [attr.colspan]="colspan">ok
+            </td>
+        </tr>
+    </table>
+    <input [(ngModel)]="email" (keyup.enter)="onKeyUp()">
+    <div (click)="onDivClick()">
+        <button class="btn btn-primary" (click)="onSave($event)">Save</button>
+    </div>
+
+    {{course.title | uppercase}}<br/>
+    {{course.students | number}}<br/>
+    {{course.rating | number:'2.1-2'}}<br/>
+    {{course.price | currency:'EGP':true:'3.1-2'}}<br/>
+    {{course.releaseDate | date:'dd/MM/YYYY'}}<br/>
+    {{course.disc | summary:10}}<br/>
+
+    <ul class="nav nav-pills">
+        <li [class.active]="viewMode== 'map'"><a (click)="viewMode='map'">Map View</a></li>
+        <li [class.active]="viewMode== 'list'"><a (click)="viewMode='list'">List View</a></li>
+    </ul>
+    <div [ngSwitch]="viewMode">
+        <div *ngSwitchCase="'map'">Map View Content</div>
+        <div *ngSwitchCase="'list'">List View Content</div>
+        <div *ngSwitchDefault>Otherwise</div>
+    </div>
+    <input type="text" [appInputFormat]="'uppercase'">
